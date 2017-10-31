@@ -1,6 +1,7 @@
 package ibratec.recife.pe.br.ibratecexercicios_asynctasks;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -21,6 +22,8 @@ import java.util.ArrayList;
 public class PublicacoesNovatecListaActivity extends AppCompatActivity {
 
     private static final String LISTA_CATEGORIA_LIVROS = "ListaCategoriaLivros";
+
+    public static final String CATEGORIA_LIVROS = "CategoriaLivros";
 
     private ProgressBar progressBar;
     private TextView txtEmpty;
@@ -75,9 +78,9 @@ public class PublicacoesNovatecListaActivity extends AppCompatActivity {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
 
-                //************************
-                //VISUALIZAR
-                //************************
+                Intent intent = new Intent(PublicacoesNovatecListaActivity.this, CategoriaLivrosListaActivity.class);
+                intent.putExtra(CATEGORIA_LIVROS, categoriaLivrosWork);
+                startActivity(intent);
 
                 return true;
             }
