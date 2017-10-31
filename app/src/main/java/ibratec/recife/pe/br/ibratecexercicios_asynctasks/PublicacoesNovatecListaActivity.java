@@ -181,7 +181,7 @@ public class PublicacoesNovatecListaActivity extends AppCompatActivity {
             }
 
             //caregando item atual
-            CategoriaLivros currentItem = (CategoriaLivros) getItem(position);
+            CategoriaLivros currentItem = getItem(position);
 
             //carregando componentes do layout
             String categoria = "Categoria: " + currentItem.getCategoria();
@@ -202,11 +202,9 @@ public class PublicacoesNovatecListaActivity extends AppCompatActivity {
                 itemLivros = (TextView) view.findViewById(R.id.txtLivros);
             }
         }
-
-
     }
 
-    class PublicacoesNovatecTask extends AsyncTask<String, Void, PublicacoesNovatec> {
+    private class PublicacoesNovatecTask extends AsyncTask<String, Void, PublicacoesNovatec> {
 
         @Override
         protected void onPreExecute() {
@@ -225,14 +223,8 @@ public class PublicacoesNovatecListaActivity extends AppCompatActivity {
             exibirProgresso(false);
 
             if (pub != null) {
-                
-                System.out.println("Sucesso");
-                System.out.println(pub);
 
-                ArrayList<CategoriaLivros> catLivro = new ArrayList<CategoriaLivros>();
-                for (int i = 0; i < pub.getNovatec().length; i++) {
-                    catLivro.add(pub.getNovatec()[i]);
-                }
+                ArrayList<CategoriaLivros> catLivro = pub.getNovatec();
 
                 listaCategoriaLivros.clear();
                 listaCategoriaLivros.addAll(catLivro);

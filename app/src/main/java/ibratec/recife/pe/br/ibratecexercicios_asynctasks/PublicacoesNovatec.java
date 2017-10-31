@@ -1,6 +1,7 @@
 package ibratec.recife.pe.br.ibratecexercicios_asynctasks;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 /**
  * Created by Frederico on 30/10/2017.
@@ -8,20 +9,20 @@ import java.io.Serializable;
 
 public class PublicacoesNovatec implements Serializable {
 
-    private CategoriaLivros[] novatec;
+    private ArrayList<CategoriaLivros> novatec;
 
     public PublicacoesNovatec() {
     }
 
-    public PublicacoesNovatec(CategoriaLivros[] novatec) {
+    public PublicacoesNovatec(ArrayList<CategoriaLivros> novatec) {
         this.novatec = novatec;
     }
 
-    public CategoriaLivros[] getNovatec() {
+    public ArrayList<CategoriaLivros> getNovatec() {
         return novatec;
     }
 
-    public void setNovatec(CategoriaLivros[] novatec) {
+    public void setNovatec(ArrayList<CategoriaLivros> novatec) {
         this.novatec = novatec;
     }
 }

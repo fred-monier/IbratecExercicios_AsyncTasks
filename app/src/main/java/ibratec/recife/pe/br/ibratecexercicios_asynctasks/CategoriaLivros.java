@@ -1,7 +1,7 @@
 package ibratec.recife.pe.br.ibratecexercicios_asynctasks;
 
 import java.io.Serializable;
-import java.util.List;
+import java.util.ArrayList;
 
 /**
  * Created by Frederico on 30/10/2017.
@@ -9,13 +9,13 @@ import java.util.List;
 
 public class CategoriaLivros implements Serializable {
 
-    public String categoria;
-    private List<Livro> livros;
+    private String categoria;
+    private ArrayList<Livro> livros;
 
     public CategoriaLivros() {
     }
 
-    public CategoriaLivros(String categoria, List<Livro> livros) {
+    public CategoriaLivros(String categoria, ArrayList<Livro> livros) {
         this.categoria = categoria;
         this.livros = livros;
     }
@@ -28,11 +28,11 @@ public class CategoriaLivros implements Serializable {
         this.categoria = categoria;
     }
 
-    public List<Livro> getLivros() {
+    public ArrayList<Livro> getLivros() {
         return livros;
     }
 
-    public void setLivros(List<Livro> livros) {
+    public void setLivros(ArrayList<Livro> livros) {
         this.livros = livros;
     }
 }

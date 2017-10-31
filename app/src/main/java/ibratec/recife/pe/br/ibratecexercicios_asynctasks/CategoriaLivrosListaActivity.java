@@ -10,8 +10,6 @@ import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
 
 public class CategoriaLivrosListaActivity extends AppCompatActivity {
@@ -39,7 +37,7 @@ public class CategoriaLivrosListaActivity extends AppCompatActivity {
         if (savedInstanceState != null) {
             listaLivros = (ArrayList<Livro>) savedInstanceState.getSerializable(LISTA_LIVROS);
         } else {
-            listaLivros = (ArrayList) catLivro.getLivros();
+            listaLivros = catLivro.getLivros();
         }
 
         this.montarLista();
@@ -98,7 +96,7 @@ public class CategoriaLivrosListaActivity extends AppCompatActivity {
             }
 
             //caregando item atual
-            Livro currentItem = (Livro) getItem(position);
+            Livro currentItem = getItem(position);
 
             //carregando componentes do layout
             viewHolder.itemTitulo.setText(currentItem.getTitulo());
