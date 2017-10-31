@@ -4,6 +4,8 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
+import com.google.gson.Gson;
+
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
@@ -22,9 +24,9 @@ import javax.net.ssl.HttpsURLConnection;
  * Created by Frederico on 30/10/2017.
  */
 
-public class LivroHttp {
+public class PublicacoesNovatecHttp {
 
-    public static final String LIVROS_URL_JASON =
+    private static final String LIVROS_URL_JASON =
             "https://raw.githubusercontent.com/nglauber/dominando_android/master/livros_novatec.json";
 
     public static boolean temConexaoWeb(Context ctx) {
@@ -40,9 +42,9 @@ public class LivroHttp {
         return res;
     }
 
-    public static List<Livro> carregarLivrosJSON() {
+    public static PublicacoesNovatec carregarPublicacoesNovatecJSON() {
 
-        List<Livro> res = null;
+        PublicacoesNovatec res = null;
 
         try {
 
@@ -52,12 +54,12 @@ public class LivroHttp {
             if (resposta == HttpURLConnection.HTTP_OK) {
 
                 InputStream is = conexao.getInputStream();
-                JSONObject jo = new JSONObject(bytesParaString(is));
+                String str = bytesParaString(is);
+                JSONObject jo = new JSONObject(str);
 
-                //*******  AQUI  *****
-                //res = USAR GSON JSON
+                Gson gson = new Gson();
+                res = gson.fromJson(jo.toString(), PublicacoesNovatec.class);
             }
-
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -78,7 +80,7 @@ public class LivroHttp {
         conexao.setConnectTimeout(15 + MILI);
         conexao.setRequestMethod("GET");
         conexao.setDoInput(true);
-        conexao.setDoInput(false);
+        conexao.setDoOutput(false);
         conexao.connect();
 
         return conexao;
@@ -99,4 +101,5 @@ public class LivroHttp {
 
         return new String(buferzao.toByteArray(), "UTF-8");
     }
+
 }
