@@ -16,6 +16,7 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -110,7 +111,8 @@ public class PublicacoesNovatecListaActivity extends AppCompatActivity {
                 iniciarChamada();
             } else {
 
-                txtEmpty.setText("Sem conexão com a internet");
+                Toast toast = Toast.makeText(getApplicationContext(), "Sem conexão com a internet", Toast.LENGTH_SHORT);
+                toast.show();
             }
 
         } else if (task.getStatus() == AsyncTask.Status.RUNNING) {
@@ -232,7 +234,8 @@ public class PublicacoesNovatecListaActivity extends AppCompatActivity {
 
 
             } else {
-                txtEmpty.setText("Falha ao obter publicações");
+                Toast toast = Toast.makeText(getApplicationContext(), "Falha ao obter publicações", Toast.LENGTH_SHORT);
+                toast.show();
             }
         }
 

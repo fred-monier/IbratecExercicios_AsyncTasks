@@ -44,11 +44,12 @@ public class PublicacoesNovatecHttp {
 
     public static PublicacoesNovatec carregarPublicacoesNovatecJSON() {
 
+        HttpURLConnection conexao = null;
         PublicacoesNovatec res = null;
 
         try {
 
-            HttpURLConnection conexao = conectar(LIVROS_URL_JASON);
+            conexao = conectar(LIVROS_URL_JASON);
 
             int resposta = conexao.getResponseCode();
             if (resposta == HttpURLConnection.HTTP_OK) {
@@ -62,7 +63,14 @@ public class PublicacoesNovatecHttp {
             }
 
         } catch (Exception e) {
+
             e.printStackTrace();
+
+        } finally {
+
+            if (conexao != null) {
+                conexao.disconnect();
+            }
         }
 
         return res;
